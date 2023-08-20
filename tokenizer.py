@@ -45,8 +45,8 @@ class Tokenizer:
                 tokens = self.retrieve_cache(data)
                 token_to_ids, id_to_tokens = {}, {}
                 for i, token in enumerate(tokens):
-                    token_to_ids[i] = token
-                    id_to_tokens[token] = i
+                    token_to_ids[token] = i
+                    id_to_tokens[i] = token
                 self.token_to_ids = token_to_ids
                 self.id_to_tokens = id_to_tokens
                 return
@@ -146,8 +146,6 @@ class Tokenizer:
         return "".join(self.id_to_tokens[token_id] for token_id in token_ids)
     
 
-t = Tokenizer('res/small_book.txt')
-print(t.tokenize("a small green cat ate nothing"))
-ids = t.tokenize_to_ids("a small green cat ate nothing, but the itsy bitsy spider ate something")
-print(ids)
-print(t.ids_to_text(ids))
+t = Tokenizer('res/war_and_peace.txt')
+text = input()
+print(t.tokenize(text))
